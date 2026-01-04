@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # 服务1: 后端 API
+  backend:
+    build: .
+    container_name: toxic-backend
+    # 启动 FastAPI
+    command: uvicorn app:app --host 0.0.0.0 --port 8080
+    ports:
+      - "8080:8080"
+    volumes:
+      # 这是一个技巧：把当前目录挂载进去，这样你改了代码不需要重建镜像就能生效
+      - .:/app
+
+  # 服务2: 前端 UI
+  frontend:
+    build: .
+    container_name: toxic-frontend
+    # 启动 Streamlit
+    command: streamlit run frontend.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      # ⚠️ 注意: 在 Docker 网络里，访问后端不能用 localhost，要用服务名 "backend"
+      - API_URL=http://backend:8080/predict
+    depends_on:
+      - backend
