@@ -96,6 +96,6 @@ Ensure that the folder roberta-toxic-finetuned exists in the project root and is
 
 👥 Authors
 
-Group: [Your Group Number]
+Group: Group 2
 
-Members: [List Member Names Here]
+Members: Bi Chaofan,Yu Xiao,Wang Chengyang,Zeng Jun hao
