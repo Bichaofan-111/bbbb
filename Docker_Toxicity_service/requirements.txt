@@ -1,9 +1,0 @@
-fastapi
-uvicorn
-pydantic
-transformers
-# 指定 CPU 版本以减小体积，这对于作业要求的“在笔记本上运行”至关重要
-torch --index-url https://download.pytorch.org/whl/cpu
-streamlit
-requests
-pandas
